@@ -1,6 +1,14 @@
 import re
 import string
+from pathlib import Path
 import nltk
+
+# Ensure workspace nltk_data directory is registered
+_WORKSPACE_ROOT = Path(__file__).resolve().parent.parent.parent
+_LOCAL_NLTK_DATA = _WORKSPACE_ROOT / 'data' / 'nltk_data'
+if _LOCAL_NLTK_DATA.exists() and str(_LOCAL_NLTK_DATA) not in nltk.data.path:
+    nltk.data.path.insert(0, str(_LOCAL_NLTK_DATA))
+
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from src.utils.logger import logger

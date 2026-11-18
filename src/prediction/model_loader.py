@@ -20,14 +20,14 @@ class ModelLoader:
                 cls._instance._is_loaded = False
         return cls._instance
 
-    def load_artifacts(self, model_path: Path = None, vectorizer_path: Path = None):
+    def load_artifacts(self, model_path: Path = None, vectorizer_path: Path = None, force_reload: bool = False):
         """Loads serialized joblib model and vectorizer artifacts."""
-        if self._is_loaded:
-            return
+        if self._is_loaded and not force_reload:
+            return True
 
         with self._lock:
-            if self._is_loaded:
-                return
+            if self._is_loaded and not force_reload:
+                return True
 
             m_path = model_path or config.MODEL_PATH
             v_path = vectorizer_path or config.VECTORIZER_PATH

@@ -60,6 +60,15 @@ def generate_starter_dataset() -> pd.DataFrame:
 
 def train_pipeline(data_path: Path = None):
     """Executes end-to-end model training, evaluation, and serialization."""
+    base_dir = Path(__file__).resolve().parent.parent.parent
+    true_csv = base_dir / 'True.csv'
+    fake_csv = base_dir / 'Fake.csv'
+    
+    if not data_path and true_csv.exists() and fake_csv.exists():
+        logger.info("Found True.csv and Fake.csv in workspace. Invoking full training pipeline...")
+        from train_model import train_and_evaluate
+        return train_and_evaluate()
+        
     logger.info("Starting Machine Learning Training Pipeline...")
     
     # 1. Load Data

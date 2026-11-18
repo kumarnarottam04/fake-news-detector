@@ -11,4 +11,5 @@ multi_line_output = 3
 [tool.pytest.ini_options]
 minversion = "8.0"
 addopts = "-v --tb=short"
+pythonpath = ["."]
 testpaths = ["tests"]

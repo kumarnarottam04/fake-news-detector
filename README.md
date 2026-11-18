@@ -1,4 +1,4 @@
-# Fake News Detection System using ML & NLP
+# Fake News Analysis System using ML & NLP
 
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)](https://flask.palletsprojects.com/)

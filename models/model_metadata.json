@@ -1,0 +1,37 @@
+{
+  "trained_at": "2026-11-17 08:07:19",
+  "best_model_name": "PassiveAggressiveClassifier",
+  "total_samples": 39100,
+  "train_samples": 31280,
+  "test_samples": 7820,
+  "accuracy": 0.9942455242966752,
+  "precision": 0.993876589731512,
+  "recall": 0.995517810804435,
+  "f1_score": 0.99469652327637,
+  "confusion_matrix": [
+    [
+      3555,
+      26
+    ],
+    [
+      19,
+      4220
+    ]
+  ],
+  "candidate_comparisons": {
+    "PassiveAggressiveClassifier": {
+      "accuracy": 99.42,
+      "precision": 99.39,
+      "recall": 99.55,
+      "f1_score": 99.47,
+      "fit_time_s": 0.18
+    },
+    "LogisticRegression": {
+      "accuracy": 99.1,
+      "precision": 98.76,
+      "recall": 99.6,
+      "f1_score": 99.18,
+      "fit_time_s": 0.17
+    }
+  }
+}

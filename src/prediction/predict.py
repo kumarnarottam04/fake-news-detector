@@ -40,10 +40,19 @@ def predict_article(raw_text: str) -> dict:
     
     # 3. Model Inference & Probabilities
     prediction_id = int(model.predict(tfidf_vector)[0])
-    probabilities = model.predict_proba(tfidf_vector)[0]
     
-    prob_fake = float(probabilities[0])
-    prob_real = float(probabilities[1])
+    if hasattr(model, 'predict_proba'):
+        probabilities = model.predict_proba(tfidf_vector)[0]
+        prob_fake = float(probabilities[0])
+        prob_real = float(probabilities[1])
+    elif hasattr(model, 'decision_function'):
+        decision = float(model.decision_function(tfidf_vector)[0])
+        # Convert decision function score to calibrated probability via Sigmoid
+        prob_real = float(1.0 / (1.0 + np.exp(-np.clip(decision, -20, 20))))
+        prob_fake = float(1.0 - prob_real)
+    else:
+        prob_real = 1.0 if prediction_id == 1 else 0.0
+        prob_fake = 1.0 - prob_real
     
     label = "REAL" if prediction_id == 1 else "FAKE"
     confidence = prob_real if prediction_id == 1 else prob_fake

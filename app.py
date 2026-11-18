@@ -160,5 +160,5 @@ app = create_app()
 if __name__ == '__main__':
     config_obj = get_config()
     port = int(config_obj.PORT) if hasattr(config_obj, 'PORT') else 5000
-    logger.info(f"Starting Fake News Detector Flask App on port {port}...")
+    logger.info(f"Starting Fake News Analysis Flask App on port {port}...")
     app.run(host='0.0.0.0', port=port, debug=config_obj.DEBUG)
