@@ -15,6 +15,7 @@ venv.bak/
 
 # Models and Large Data Files (Keep git light)
 *.joblib
+!models/*.joblib
 *.pkl
 *.csv
 Fake.csv
